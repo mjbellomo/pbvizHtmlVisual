@@ -1,0 +1,24 @@
+{
+  "visual": {
+    "name": "customVisual",
+    "displayName": "customVisual",
+    "guid": "PBI_CV_44C21355_D41A_4E75_8D06_4AF48BFF293D",
+    "visualClassName": "Visual",
+    "version": "1.0.0",
+    "description": "",
+    "supportUrl": "",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "1.4.0",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": "dependencies.json"
+}
