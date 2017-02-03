@@ -38,23 +38,8 @@ module powerbi.extensibility.visual {
 
         public update(options: VisualUpdateOptions) {
             console.log('Visual update', options);
-            this.target.innerHTML = options.dataViews[0].table.rows.toString();
+            this.target.innerText = options.dataViews[0].table.rows.toString();
+            this.target.setAttribute('style', this.target.innerHTML);
         }
     }
 }
-
-/*
-`<p>
-          <h3 style=''><b>During Task</b></h3>
-          <ul>
-            <li style="color:red;">&#0149 Orange Areas contain slopes in excess of 15 Degrees</li>
-            <li style="color:red;">&#0149 Stay clear of the red caution areas</li>
-            <li>&#0149 Monitor your slope indicator</li>
-            <li>&#0149 Always stay within the operating limits of the machine</li>
-            <li>&#0149 If machine is ROPS equipped, seatbelts to be worn.</li>
-            <li>&#0149 Always keep a lookout for public encroaching into the area. If public enter the area cease mowing operations immediately and politely request them to move on until the mowing is complete and signs removed.</li>
-            <li>&#0149 Mow only in areas within the slope capability of the machine</li>
-            <li>&#0149 Wherever possible mow up and down the slope and not across</li>  
-         </ul>
-</p>`;
-*/

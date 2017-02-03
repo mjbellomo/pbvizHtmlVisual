@@ -40,7 +40,8 @@ var powerbi;
                     }
                     Visual.prototype.update = function (options) {
                         console.log('Visual update', options);
-                        this.target.innerHTML = options.dataViews[0].table.rows.toString();
+                        this.target.innerText = options.dataViews[0].table.rows.toString();
+                        this.target.setAttribute('style', this.target.innerHTML);
                     };
                     return Visual;
                 }());
@@ -49,30 +50,15 @@ var powerbi;
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
-/*
-`<p>
-          <h3 style=''><b>During Task</b></h3>
-          <ul>
-            <li style="color:red;">&#0149 Orange Areas contain slopes in excess of 15 Degrees</li>
-            <li style="color:red;">&#0149 Stay clear of the red caution areas</li>
-            <li>&#0149 Monitor your slope indicator</li>
-            <li>&#0149 Always stay within the operating limits of the machine</li>
-            <li>&#0149 If machine is ROPS equipped, seatbelts to be worn.</li>
-            <li>&#0149 Always keep a lookout for public encroaching into the area. If public enter the area cease mowing operations immediately and politely request them to move on until the mowing is complete and signs removed.</li>
-            <li>&#0149 Mow only in areas within the slope capability of the machine</li>
-            <li>&#0149 Wherever possible mow up and down the slope and not across</li>
-         </ul>
-</p>`;
-*/ 
 var powerbi;
 (function (powerbi) {
     var visuals;
     (function (visuals) {
         var plugins;
         (function (plugins) {
-            plugins.PBI_CV_44C21355_D41A_4E75_8D06_4AF48BFF293D = {
-                name: 'PBI_CV_44C21355_D41A_4E75_8D06_4AF48BFF293D',
-                displayName: 'customVisual',
+            plugins.PBI_CV_44C21355_D41A_4E75_8D06_4AF48BFF293D_DEBUG = {
+                name: 'PBI_CV_44C21355_D41A_4E75_8D06_4AF48BFF293D_DEBUG',
+                displayName: 'HTML Text Box',
                 class: 'Visual',
                 version: '1.0.0',
                 apiVersion: '1.4.0',
