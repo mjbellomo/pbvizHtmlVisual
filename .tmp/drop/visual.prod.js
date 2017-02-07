@@ -39,9 +39,32 @@ var powerbi;
                         this.updateCount = 0;
                     }
                     Visual.prototype.update = function (options) {
+                        var dataViews = options.dataViews;
+                        //if there is no dataview return
+                        if (!dataViews || dataViews.length === 0)
+                            return;
+                        var dataView = dataViews[0];
+                        if (!dataView || !dataView.metadata)
+                            return;
+                        //for debugging
                         console.log('Visual update', options);
-                        this.target.innerText = options.dataViews[0].table.rows.toString();
-                        this.target.setAttribute('style', this.target.innerHTML);
+                        //parse the HTML input string and recreate using style attr passed inline
+                        var parser = new DOMParser();
+                        //let htmlIn = parser.parseFromString(dataView.table.rows.toString(), "text/html");
+                        var htmlIn = parser.parseFromString("<h3 style='in'>test, after this is a script</h3><br /><script>alert('haxxord');</script>", "text/html");
+                        var all = htmlIn.getElementsByTagName("*");
+                        for (var i = 0, max = all.length; i < max; i++) {
+                            var x = document.createElement(all[i].tagName);
+                            this.target.appendChild(x);
+                            if (all[i].getAttribute("style")) {
+                                x.setAttribute("style", all[i].getAttribute("style"));
+                                x.textContent = all[i].textContent;
+                            }
+                            else {
+                                x.setAttribute("style", window.getComputedStyle(all[i], null).cssText);
+                                x.textContent = all[i].textContent;
+                            }
+                        }
                     };
                     return Visual;
                 }());
